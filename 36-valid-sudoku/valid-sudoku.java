@@ -4,12 +4,11 @@ class Solution {
             int [] row = new int[9];
             for(int x = 0; x<9;x++){
                 int place = board[i][x]-'0'-1;
-                if (place >=0)
+                if (place >=0){
+                    if(row[place] ==1)
+                        return false;
                     row[place] += 1;
-            }
-            for(int z = 0 ; z<9;z++){
-                if(row[z] >1)
-                    return false;
+                }
             }
         }
         for(int i = 0; i<9;i++){
