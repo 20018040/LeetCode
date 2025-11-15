@@ -12,7 +12,8 @@ class Solution {
         int current = 1;
         int prev = list.get(0);
         for(int i = 1; i<list.size();i++){
-            if(list.get(i) == prev +1){
+            int cur = list.get(i);
+            if(cur == prev +1){
                 current++;
                 if(current >= largestCons){
                     largestCons = current;
@@ -21,7 +22,7 @@ class Solution {
             else{
                 current = 1;
             }
-            prev = list.get(i);
+            prev = cur;
         }
         return largestCons;
     }
