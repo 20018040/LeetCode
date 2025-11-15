@@ -6,24 +6,19 @@ class Solution {
         for(int i = 0; i<size;i++){
             set.add(nums[i]);
         }
-        List<Integer> list = new ArrayList<>(set);
-        Collections.sort(list);
         int largestCons = 1;
-        int current = 1;
-        int prev = list.get(0);
-        for(int i = 1; i<list.size();i++){
-            int cur = list.get(i);
-            if(cur == prev +1){
-                current++;
-                if(current >= largestCons){
-                    largestCons = current;
+        for(int num : set){
+            if(!set.contains(num-1)){
+                int cur = num;
+                int current = 1; 
+                while(set.contains(cur +1)){
+                    current++;
+                    cur = cur +1; 
                 }
+                largestCons = current >largestCons? current : largestCons;
             }
-            else{
-                current = 1;
-            }
-            prev = cur;
         }
+        
         return largestCons;
     }
 }
