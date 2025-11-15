@@ -9,11 +9,10 @@ class Solution {
         int largestCons = 1;
         for(int num : set){
             if(!set.contains(num-1)){
-                int cur = num;
                 int current = 1; 
-                while(set.contains(cur +1)){
+                while(set.contains(num +1)){
                     current++;
-                    cur = cur +1; 
+                    num++; 
                 }
                 largestCons = current >largestCons? current : largestCons;
             }
