@@ -18,9 +18,6 @@ class Solution {
         int answer = 0;
         int lowest = 0;
         int i = 0;
-        // while(height[i] == 0){
-        //     i++;
-        // }
         int leftPlace = i;
         int heightL = height[leftPlace];
         for(i= leftPlace +1; i< hLength;i++){
@@ -37,7 +34,6 @@ class Solution {
         }
         int tallestPlace = highestPlace(leftPlace+1,height);
         while(tallestPlace != -1){
-            
             int tHeight = height[tallestPlace];
             int left = tallestPlace -1;
             while(left > leftPlace){
