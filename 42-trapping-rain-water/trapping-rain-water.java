@@ -1,49 +1,54 @@
 class Solution {
-    public int highestPlace(int starting,int[] height){
-        int highest = -1;
-        int compare = 1;
-        while(starting < height.length){
-            if (height[starting] >= compare){
-                compare = height[starting];
-                highest = starting;
-            }
-            starting ++;
-        }
-        return highest;
-    }
+
     public int trap(int[] height) {
-        int hLength = height.length;
-        if(hLength ==1 )
-            return 0;
+        int n = height.length;
+        if (n <= 1) return 0;
+
+        int[] rightMaxIndex = new int[n];
+        int maxIndex = n - 1;
+        rightMaxIndex[n - 1] = n - 1;
+
+        for (int i = n - 2; i >= 0; i--) {
+            if (height[i] >= height[maxIndex]) {
+                maxIndex = i;
+            }
+            rightMaxIndex[i] = maxIndex;
+        }
+
         int answer = 0;
-        int lowest = 0;
-        int i = 0;
-        int leftPlace = i;
+        int leftPlace = 0;
         int heightL = height[leftPlace];
-        for(i= leftPlace +1; i< hLength;i++){
-            int heightI = height[i];
-            if(heightI >= heightL){
-                int x = i-1;
-                while(x>leftPlace){
-                    answer += (heightL-height[x]);
+
+        for (int i = leftPlace + 1; i < n; i++) {
+            int h = height[i];
+            if (h >= heightL) {
+                int x = i - 1;
+                while (x > leftPlace) {
+                    answer += heightL - height[x];
                     x--;
                 }
                 leftPlace = i;
-                heightL = heightI;                
+                heightL = h;
             }
         }
-        int tallestPlace = highestPlace(leftPlace+1,height);
-        while(tallestPlace != -1){
+        if(leftPlace == height.length-1) return answer;
+        int tallestPlace = rightMaxIndex[leftPlace + 1];
+
+        while (tallestPlace != leftPlace) {
             int tHeight = height[tallestPlace];
-            int left = tallestPlace -1;
-            while(left > leftPlace){
+            int left = tallestPlace - 1;
+
+            while (left > leftPlace) {
                 answer += tHeight - height[left];
                 left--;
             }
+
             leftPlace = tallestPlace;
-            tallestPlace = highestPlace(tallestPlace+1,height);
-            
+
+            if (leftPlace + 1 >= n) break;
+            tallestPlace = rightMaxIndex[leftPlace + 1];
         }
+
         return answer;
     }
 }
