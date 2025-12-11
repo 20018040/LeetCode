@@ -6,8 +6,9 @@ class Solution {
                 stack.add(c);
             }
             else{
-                if(stack.size() == 0) return false;
-                char d =stack.remove(stack.size()-1); 
+                int size = stack.size();
+                if(size == 0) return false;
+                char d =stack.remove(size-1); 
                 if(d != (c-2) && d != c-1){
                     return false;
                 }
