@@ -1,5 +1,6 @@
 class MinStack {
     private ArrayList<Integer> list = new ArrayList<>();
+    PriorityQueue<Integer> pq = new PriorityQueue<>();
     public MinStack() {
         
     }
@@ -17,7 +18,8 @@ class MinStack {
     }
     
     public int getMin() {
-        return Collections.min(list);
+        PriorityQueue<Integer> pq = new PriorityQueue<>(list);
+        return pq.peek();
     }
 }
 
