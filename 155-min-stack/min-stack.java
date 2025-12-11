@@ -1,25 +1,42 @@
 class MinStack {
-    private ArrayList<Integer> list = new ArrayList<>();
-    PriorityQueue<Integer> pq = new PriorityQueue<>();
+    private Node head; 
     public MinStack() {
         
     }
     
     public void push(int val) {
-        list.add(val);
+        if(this.head != null){
+            Node add = new Node(val, Math.min(val,head.min));
+            add.next = head;
+            head = add;
+        }
+        else{
+            this.head = new Node(val, val);
+        }
     }
     
     public void pop() {
-        list.remove(list.size()-1);
+        this.head = head.next;
     }
     
     public int top() {
-        return list.get(list.size()-1);
+        return this.head.val;
     }
     
     public int getMin() {
-        PriorityQueue<Integer> pq = new PriorityQueue<>(list);
-        return pq.peek();
+        return head.peak();
+    }
+    private class Node{
+        private int val;
+        private int min; 
+        private Node next;
+        private Node(int val, int min){
+            this.val = val;
+            this.min = min;
+        }
+        private int peak(){
+            return this.min;
+        }
     }
 }
 
