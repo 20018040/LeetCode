@@ -6,8 +6,6 @@ class Solution {
             while(!stack.isEmpty()&& temperatures[i]>temperatures[stack.peek()]){
                 int place = stack.pop();
                 answer[place] = i-place;
-            
-                
             }
             stack.push(i);
         }
