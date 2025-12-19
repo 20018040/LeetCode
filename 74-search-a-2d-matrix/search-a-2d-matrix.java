@@ -16,9 +16,6 @@ class Solution {
                 break;
             }
         }
-        
-        if(row != 0 && matrix[row][0] > target)
-         row--;
          left = 0;
         // if (row ==2) return true;
         right = matrix[row].length-1;
