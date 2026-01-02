@@ -4,11 +4,11 @@ class Solution {
         int profit = 0;
         for(int i = 1; i< prices.length; i++){
             int price = prices[i];
-            if ( price - lowest > profit){
-                profit = price - lowest; 
-            }
             if(price < lowest ){
-                    lowest = price; 
+                lowest = price; 
+            }
+            else if ( price - lowest > profit){
+                profit = price - lowest; 
             }
             
         }
