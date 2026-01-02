@@ -7,8 +7,10 @@ class Solution {
             if(price < lowest ){
                 lowest = price; 
             }
-            else if ( price - lowest > profit){
-                profit = price - lowest; 
+            else {
+                int compare = price- lowest;
+                if (compare > profit)
+                    profit = compare; 
             }
             
         }
