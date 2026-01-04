@@ -9,7 +9,7 @@ for (int right = 0; right < s.length(); right++) {
     int idx = s.charAt(right) - 'A';
     count[idx]++;
     maxFreq = Math.max(maxFreq, count[idx]);
-
+    
     while ((right - left + 1) - maxFreq > k) {
         count[s.charAt(left) - 'A']--;
         left++;
