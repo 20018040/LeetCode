@@ -9,13 +9,14 @@ for (int right = 0; right < s.length(); right++) {
     int idx = s.charAt(right) - 'A';
     count[idx]++;
     maxFreq = Math.max(maxFreq, count[idx]);
-    
-    while ((right - left + 1) - maxFreq > k) {
+    int length = (right - left + 1);
+    while (length - maxFreq > k) {
         count[s.charAt(left) - 'A']--;
         left++;
+        length --;
     }
 
-    result = Math.max(result, right - left + 1);
+    result = Math.max(result, length);
 }
         return result;
     }
