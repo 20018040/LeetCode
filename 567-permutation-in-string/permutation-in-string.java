@@ -1,32 +1,27 @@
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
-        if (s1.length() > s2.length()) return false;
+        
+        int[] comb = new int[26];
+        int[] comp = new int[26];
+        int i = 0;
 
-        int[] need = new int[26];
-        int[] window = new int[26];
-
-        for (char c : s1.toCharArray()) {
-            need[c - 'a']++;
+        int size = s1.length();
+        if(s2.length()<size)
+            return false;
+        for(; i<size;i++){
+            comb[s1.charAt(i)-'a']++;
+            comp[s2.charAt(i)-'a']++;
         }
-
-        int left = 0;
-        for (int right = 0; right < s2.length(); right++) {
-            window[s2.charAt(right) - 'a']++;
-
-            if (right - left + 1 > s1.length()) {
-                window[s2.charAt(left) - 'a']--;
-                left++;
+        for(;i<s2.length();i++){
+            if(Arrays.equals(comb,comp)){
+                return true;
             }
-
-            if (matches(need, window)) return true;
+            comp[s2.charAt(i-size)-'a']--;
+            comp[s2.charAt(i)-'a']++;
         }
+        if(Arrays.equals(comb,comp)){
+                return true;
+            }
         return false;
-    }
-
-    private boolean matches(int[] a, int[] b) {
-        for (int i = 0; i < 26; i++) {
-            if (a[i] != b[i]) return false;
-        }
-        return true;
     }
 }
