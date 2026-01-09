@@ -25,7 +25,7 @@ class Solution {
                 if(com[num] <= nums[num])
                     found++;
                 while(found == size){
-                    if(ans == "" || right-left < ans.length())
+                    if(ans.isEmpty() || right-left < ans.length())
                         ans = s.substring(left,right);
                     int z = s.charAt(left) - 'A';
                     com[z]--;
