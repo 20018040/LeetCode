@@ -11,13 +11,12 @@
  */
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        ArrayList<ListNode> collection = new ArrayList<>();
         if(head == null)
             return false;
         while(head.next != null){
-            if(collection.contains(head))
+            if(head.val == Integer.MIN_VALUE)
                 return true;
-            else collection.add(head);
+            head.val = Integer.MIN_VALUE;
             head = head.next;
         }
         return false;
