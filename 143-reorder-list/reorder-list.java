@@ -13,30 +13,34 @@ class Solution {
 
         ListNode slow = head;
         ListNode fast = head;
-        while(fast !=null && fast.next != null ){
+        while(fast.next != null && fast.next.next != null){
             slow = slow.next;
             fast = fast.next.next;
         }
+        fast = slow.next;
+        slow.next = null;
         ListNode reverse = null;
         
-        while(slow != null){//rverse it 
-            ListNode next = slow.next;
-            slow.next = reverse;
-            reverse = slow;
-            slow = next;
+        while(fast != null){//rverse it 
+            ListNode next = fast.next;
+            fast.next = reverse;
+            reverse = fast;
+            fast = next;
         }
-        ListNode first=head;
-       ListNode second= reverse;
-       while(second.next!=null){
-        ListNode temp1 = first.next;
-        ListNode temp2 = second.next;
-
-        first.next=second;
-        second.next=temp1;
-        
-
-        first=temp1;
-        second=temp2;
+        while(reverse !=null){//put reverse and head in one place
+            if(reverse.next != null&& head.next !=null){
+                ListNode next = reverse.next;
+                reverse.next = head.next;
+                head.next = reverse;
+                reverse = next;
+                head = head.next.next;
+            }
+            else{
+                reverse.next = head.next;
+                head.next = reverse;
+                break;
+                
+            }
         }
     }
 }
