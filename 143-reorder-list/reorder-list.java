@@ -10,9 +10,7 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
-        if ( head == null){
-            return;
-        }
+
         ListNode slow = head;
         ListNode fast = head;
         while(fast.next != null && fast.next.next != null){
