@@ -27,20 +27,15 @@ class Solution {
             reverse = fast;
             fast = next;
         }
-        while(reverse !=null){//put reverse and head in one place
-            if(reverse.next != null&& head.next !=null){
-                ListNode next = reverse.next;
-                reverse.next = head.next;
-                head.next = reverse;
-                reverse = next;
-                head = head.next.next;
-            }
-            else{
-                reverse.next = head.next;
-                head.next = reverse;
-                break;
-                
-            }
+        while(reverse !=null){
+            ListNode Temp1 = head.next;
+            ListNode Temp2 = reverse.next;
+            
+            reverse.next = head.next;
+            head.next = reverse;
+            
+            head = Temp1;
+            reverse = Temp2;
         }
     }
 }
