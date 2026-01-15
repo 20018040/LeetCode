@@ -41,6 +41,7 @@ class Solution {
                 reverse.next = head.next;
                 head.next = reverse;
                 break;
+                
             }
         }
     }
