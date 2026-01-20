@@ -18,27 +18,17 @@ class Solution {
         TreeNode temp = root.left;
         root.left = root.right;
         root.right = temp;
+        if(root.left != null)
+            swap(root.left);
+        if(root.right !=null)
+            swap(root.right);
     }
     public TreeNode invertTree(TreeNode root) {
         
         if(root == null){
             return null;
         }
-        ArrayList<TreeNode> list = new ArrayList<TreeNode>();
-        list.add(root);
-        TreeNode head = null;
-        while(list.size() >0){
-            head = list.get(0);
-            if(head.left != null){
-                list.add(head.left);
-            }
-            if(head.right != null){
-                list.add(head.right);
-            }
-            swap(head);
-            list.remove(0);
-        }
-        
+        swap(root);
         return root;
     }
 }
