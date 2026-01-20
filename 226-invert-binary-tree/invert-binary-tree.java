@@ -21,7 +21,6 @@ class Solution {
     }
     public TreeNode invertTree(TreeNode root) {
         
-        int level = 1;
         if(root == null){
             return null;
         }
