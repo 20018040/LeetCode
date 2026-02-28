@@ -22,11 +22,12 @@ class Solution {
         }
         ListNode abc = answer;
         while(pq.size() >0){
-            ListNode small = pq.poll();
-            if(small.next != null)
-                pq.add(small.next);
-            abc.next = small;
+            
+            abc.next = pq.poll();
             abc = abc.next;
+            if (abc.next != null){
+                pq.add(abc.next);
+            }
         }
         return answer.next;
     }
