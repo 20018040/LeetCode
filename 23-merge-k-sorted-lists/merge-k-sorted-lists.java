@@ -10,14 +10,13 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        
         ListNode answer = new ListNode();
         PriorityQueue<ListNode> pq = new PriorityQueue<>(
             (a, b) -> a.val - b.val 
         );
-        for(int i = 0; i< lists.length;i++){
-            if(lists[i] != null)
-            pq.add(lists[i]);
+        for(ListNode q : lists){
+            if(q != null)
+            pq.add(q);
         }
         ListNode abc = answer;
         while(pq.peek() != null){
