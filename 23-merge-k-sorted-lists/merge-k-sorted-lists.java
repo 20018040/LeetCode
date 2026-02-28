@@ -21,7 +21,7 @@ class Solution {
             pq.add(lists[i]);
         }
         ListNode abc = answer;
-        while(pq.size() >0){
+        while(pq.peek() != null){
             
             abc.next = pq.poll();
             abc = abc.next;
