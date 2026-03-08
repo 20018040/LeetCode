@@ -9,16 +9,14 @@ class Solution {
         value.put('C',100);
         value.put('D',500);
         value.put('M',1000);
-        int recent = 0;
         for(int i = s.length()-1; i>=0;i--){
             char c = s.charAt(i);
             int num = value.get(c);
-            if(num< recent){
+            if(num*3< answer){
                 answer = answer - num;
             }
             else 
                 answer = answer +num;
-            recent = num;
         }
         return answer;
     }
