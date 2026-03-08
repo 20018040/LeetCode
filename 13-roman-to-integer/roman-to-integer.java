@@ -13,9 +13,10 @@ class Solution {
             char c = s.charAt(i);
             int num = value.get(c);
             if(num< value.get(s.charAt(i+1))){
-                num = num *-1;
+                answer = answer - num;
             }
-            answer = answer + num;
+            else 
+                answer = answer +num;
         }
         answer = answer + value.get(s.charAt(s.length()-1));
         return answer;
